@@ -19,6 +19,8 @@
     "fs": "^0.0.1-security",
     "idb": "^7.0.1",
     "lodash": "^4.17.21",
+    "magnetar": "^0.5.4",
+    "merge-anything": "^5.0.2",
     "os": "^0.1.2",
     "path": "^0.12.7",
     "quasar": "^2.6.0",
@@ -26,8 +28,7 @@
     "vue": "^3.0.0",
     "vue-lodash": "^2.1.2",
     "vue-router": "^4.0.0",
-    "vuex": "^4.0.1",
-    "vuex-easy-firestore": "^1.37.0"
+    "vuex": "^4.0.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",

@@ -1,6 +1,20 @@
 <template>
-  <q-page class="flex-center">
+  <!-- <q-page class="flex-center"> -->
+
     <h3>Личный кабинет исполнителя</h3>
+    <h3>Личный кабинет исполнителя</h3>
+    <h3>Личный кабинет исполнителя</h3>
+
+
+
+
+
+    <div class="q-py-xl">
+      <div class="text-h6">Редактировать личную информацию  (шаблон):</div>
+      <!-- <q-btn @click="openEditDialog = !openEditDialog" label="Редактировать" icon="edit"></q-btn> -->
+      <!-- <edit-aide-data v-model:openEditDialog="openEditDialog"/> -->
+    </div>
+
     <div class="text-h6">Список подключенных групп к системе:</div>
     <div class="text-h8">Вы размещаетесь:</div>
     <div class="row ">
@@ -41,19 +55,23 @@
 
 
 
-  </q-page>
+  <!-- </q-page> -->
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import GroupCard from 'src/components/GroupCard.vue'
+import EditAideData from '../components/EditAideData.vue'
+
 
 
 
 
 export default defineComponent({
-  name: 'aidepage',
+  name: 'ManageAide',
   setup() {
+    let openEditDialog = ref(false)
+
     let groups = [
       {
         groupName: 'Учёба в УрГУПС',
@@ -69,8 +87,8 @@ export default defineComponent({
       },
     ]
 
-    return {groups}
+    return {groups, openEditDialog}
   },
-  components: {GroupCard}
+  components: {GroupCard, EditAideData}
 })
 </script>

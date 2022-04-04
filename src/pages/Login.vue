@@ -115,7 +115,7 @@ export default {
           console.log(error);
         }
     }
-    return {login, name, email, password, isPwd, tabs}
+    return {login, name, email, password, isPwd, tabs, register}
   }
 
 }

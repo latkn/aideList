@@ -79,7 +79,7 @@ const routes = [
     component: () => import('../pages/Aide.vue'),
     meta: {
       auth: true,
-      layout: 'main'
+      // layout: 'main'
     },
     children: [
       {
@@ -101,6 +101,15 @@ const routes = [
           }
       },
     ]
+  },
+  {
+    path: '/manage2',
+      name: 'ManageAide2',
+      component: () => import('../pages/AidePage2.vue'),
+      meta: {
+        auth: true,
+        layout: 'main'
+      }
   },
   {
     path: '/',

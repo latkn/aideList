@@ -4,7 +4,8 @@
   <div class="text-h3 q-my-md">
     Список исполнителей
   </div>
-  <q-btn align="between" class="btn-fixed-width" color="accent" label="Настройки ценовой политики" icon="settings" @click="isAuctionSettingsOpen=true"/>
+  <q-btn align="between" class="btn-fixed-width" color="accent"
+  label="Настройки ценовой политики" icon="settings" @click="isAuctionSettingsOpen=true"/>
 
 
 

@@ -1,6 +1,10 @@
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import {createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, set, onValue} from "firebase/database";
+import { getFirestore} from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
+
+
 import {store} from 'vuex'
 
 const actions = {
@@ -27,15 +31,20 @@ const actions = {
     async register({commit, dispatch}, {email, password, name}) {
       try {
         const auth = getAuth();
-        const database = getDatabase();
+        const db = getFirestore();
 
           await createUserWithEmailAndPassword(auth, email, password, name)
           .then((userCredential) => {
-            // Signed in
-            // const user = userCredential.user;
-            // console.log(user);
+            console.log(userCredential);
+
           })
-            let uid = await dispatch('auth/getUid')
+          const docRef = await addDoc(collection(db, "users"), {
+            first: "Ada",
+            last: "Lovelace",
+            born: 1815
+          });
+          console.log("Document written with ID: ", docRef.id);
+            // let uid = await dispatch('auth/getUid')
 
 
 

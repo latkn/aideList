@@ -1,7 +1,7 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import routes from './routes'
-import { getAuth } from 'firebase/auth'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 // const process = require('process');
 
@@ -37,11 +37,18 @@ export default route(function (/* { store, ssrContext } */) {
 
   })
 
-    Router.beforeEach((to, from, next) => {
+    Router.beforeEach( async(to, from, next) => {
       const auth = getAuth();
-      const user = auth.currentUser;
+      // const user = auth.currentUser;
+      const user = await new Promise((resolve, reject) => {
+        auth.onAuthStateChanged(user => {
+          // store.dispatch('myFirebaseUserAction', user.toJSON())
+          resolve(user)
+        })
+      })
 
       const requireAuth = to.meta.auth;
+      console.log('requireAuth: ',requireAuth);
 
         if (requireAuth && !user) {
             next('/login?message=login')
