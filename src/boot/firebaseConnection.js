@@ -23,7 +23,7 @@ import { logger } from '@magnetarjs/utils'
 
 
 
-export default async () => {
+// export default async () => {
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
     const firebaseConfig = {
@@ -36,66 +36,54 @@ export default async () => {
       measurementId: "G-Y1R6ZYTS0N"
     };
 
+  // }
+
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
     // console.log(auth);
 
-    const checkAuthStatus = () => {
-      // console.log('running checkAuthStatus()')
-
-      return new Promise((resolve, reject) => {
-        try {
-          auth
-            .onAuthStateChanged(user => {
-              console.log('userChecked:', user)
-              resolve(user)
-            })
-        } catch {
-          reject('api failed')
-        }
-      })
-    }
-
-    checkAuthStatus();
 
 
-const db = getFirestore(app)
-/**
- * A helper function that generates a random Firestore ID
- */
-function generateRandomId () { return doc(collection(db, 'random')).id }
 
-// ---------------------------------------------
-// 1. the plugin firestore for remote data store
-// ---------------------------------------------
+    const db = getFirestore(app)
+    /**
+     * A helper function that generates a random Firestore ID
+     */
+    function generateRandomId () { return doc(collection(db, 'random')).id }
 
-
-// create the remote store plugin instance & pass your `db`:
-const remote = PluginFirestore({ db })
-
-// ---------------------------------------
-// 2. the plugin vue2 for local data store
-// ---------------------------------------
+    // ---------------------------------------------
+    // 1. the plugin firestore for remote data store
+    // ---------------------------------------------
 
 
-// create the local store plugin instance & pass your `generateRandomId`:
-const local = PluginVue({ generateRandomId })
+    // create the remote store plugin instance & pass your `db`:
+    // const remote = PluginFirestore({ db })
 
-// -----------------------------------------------------
-// 3. instantiate the Magnetar instance with the store plugins
-// -----------------------------------------------------
-
-const magnetar = Magnetar({
-  stores: { local, remote },
-  localStoreName: 'local',
-  executionOrder: {
-    read: ['local', 'remote'],
-    write: ['local', 'remote'],
-    delete: ['local', 'remote'],
-  },
-  on: { success: logger }, // disable this on production builds
-})
+    // ---------------------------------------
+    // 2. the plugin vue2 for local data store
+    // ---------------------------------------
 
 
-}
+    // create the local store plugin instance & pass your `generateRandomId`:
+    // const local = PluginVue({ generateRandomId })
+
+    // -----------------------------------------------------
+    // 3. instantiate the Magnetar instance with the store plugins
+    // -----------------------------------------------------
+
+    // const magnetar = Magnetar({
+    //   stores: { local, remote },
+    //   localStoreName: 'local',
+    //   executionOrder: {
+    //     read: ['local', 'remote'],
+    //     write: ['local', 'remote'],
+    //     delete: ['local', 'remote'],
+    //   },
+    //   on: { success: logger }, // disable this on production builds
+    // })
+
+
+
+
+export {db}

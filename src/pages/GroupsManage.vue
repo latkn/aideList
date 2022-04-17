@@ -1,14 +1,31 @@
 <template>
   <q-page class="flex-center q-ma-xl">
-    <h3>Список подключенных групп</h3>
-    <q-btn color="green" class="q-mb-lg" icon="add" label="Подключить новое сообщество" />
+    <h3>Список ваших групп</h3>
+    <!-- <router-link to='/groups/add'  > -->
+      <q-btn color="green" class="q-mb-lg" icon="add" label="Подключить новое сообщество"
+      @click="isEditGroupDataDialogOpen=true"
+       />
+    <q-dialog v-model="isEditGroupDataDialogOpen">
+      <edit-group-data>
+        <template v-slot:header>
+          <q-card-section class="row items-center q-pb-xs">
+            <div class="text-h6">Добавить группу</div>
+            <q-space />
+            <q-btn icon="close" flat round dense v-close-popup />
+          </q-card-section>
+        </template>
+      </edit-group-data>
+    </q-dialog>
+    <!-- </router-link> -->
     <div class="row ">
-    <group-card
-    class="q-mr-md q-mb-md"
-    v-for="group of groups" :key="group.groupName"
-    :group="group"
-    :link="'/groups/edit'"
-    ></group-card>
+      <keep-alive>
+        <group-card
+        class="q-mr-md q-mb-md"
+        v-for="group of allGroups" :key="group"
+        :group="group"
+        :linkName="'editGroup'"
+        ></group-card>
+      </keep-alive>
     </div>
 
 
@@ -17,31 +34,40 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted, onBeforeMount, computed, ref} from 'vue'
+import { useStore } from 'vuex'
 import GroupCard from 'src/components/GroupCard.vue'
+import EditGroupData from 'src/components/EditGroupData.vue'
 
 export default defineComponent({
   name: 'IndexPage',
   setup() {
-    let groups = [
-      {
-        groupName: 'Учёба в УрГУПС',
-        groupLink: 'vk.com/usurt_study',
-        numberOfAides: 6,
-        groupAvatar: 'https://sun9-71.userapi.com/impf/bz485gW1e-GGxlyNUcus_saYMEfayESd6BzbIw/l5Xvk3GBjOA.jpg?size=1500x1500&quality=95&sign=30da46a74d7af5db0607af43abfb5537&type=album'
-      },
-      {
-        groupName: 'Подслушано УрФУ',
-        groupLink: 'vk.com/overhearurfu',
-        numberOfAides: 8,
-        groupAvatar: 'https://sun9-49.userapi.com/impf/c629406/v629406532/11446/drSlx8Dc94E.jpg?size=604x604&quality=96&sign=c55a68ec1cb1ba76ed1abd28fc127907&type=album'
-      },
-    ]
+    const store = useStore();
+    const groups = ref()
+    const allGroups = ref([])
 
-    return {groups}
+    const isEditGroupDataDialogOpen = ref(false)
+
+    onMounted(async()=> {
+      groups.value = await store.dispatch('groups/fetchGroups')
+      groups.value.forEach((group)=> allGroups.value.push(group))
+      // console.log(AllGroups.value);
+    })
+
+
+
+
+    return {groups, allGroups, isEditGroupDataDialogOpen}
   },
-  components: {GroupCard}
+  components: {GroupCard, EditGroupData}
 })
 </script>
+
+<style scoped>
+a {
+   text-decoration: none;
+   color: inherit;
+}
+</style>
 
 

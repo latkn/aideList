@@ -74,6 +74,7 @@ const actions = {
     getUid() {
       const auth = getAuth();
       const user = auth.currentUser;
+      // console.log('user = ', user.uid);
       return user ? user.uid : null;
     },
 

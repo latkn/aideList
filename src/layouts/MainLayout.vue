@@ -70,12 +70,6 @@ const linksList = [
     path: '/groups/wallet'
   },
   {
-    title: 'Добавить группу',
-    caption: '',
-    icon: 'chat',
-    path: '/groups/add'
-  },
-  {
     title: 'ЛК исполнителя',
     caption: '',
     icon: 'code',

@@ -1,12 +1,15 @@
-import aideList from './modules/aideList'
 import auth from './modules/auth'
+import aide from './modules/aide'
+import groups from './modules/groups'
 import { createStore } from 'vuex'
 
 export default function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
-      aideList,
-      auth
+      auth,
+      groups,
+      aide
+
     },
 
     // enable strict mode (adds overhead!)

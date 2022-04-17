@@ -52,8 +52,8 @@ export default route(function (/* { store, ssrContext } */) {
 
         if (requireAuth && !user) {
             next('/login?message=login')
-        } else if (!requireAuth && user) {
-          next('/groups/manage');
+        // } else if (!requireAuth && user) {
+        //   next('/groups/manage');
         } else {
           next()
         }

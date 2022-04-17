@@ -33,29 +33,31 @@
           </q-card-section>
 
       <q-separator/>
-        <q-card-section horizontal class="full-width items-center justify-between" v-if="isGroupEditor">
-          <q-card-section>
+      <q-card-section horizontal class="full-width items-center justify-between">
+          <!-- <q-card-section>
             Дата последней оплаты: {{aide.dateOfPayment}}
           </q-card-section>
           <q-card-section>
             Оплачено до: {{aide.dateOfPaymentEnd}}
-          </q-card-section>
+          </q-card-section> -->
           <!-- <q-space /> -->
-          <q-card-section>
+          <!-- <q-card-section>
             <q-btn color="red" label="" icon-right="block"></q-btn>
-          </q-card-section>
-          <q-card-section>
-            <slot></slot>
-          </q-card-section>
+          </q-card-section> -->
 
+        </q-card-section>
+        <q-card-section>
+          <slot></slot>
         </q-card-section>
 
       </q-card>
-    </template>
+</template>
 
 
 
 <script>
+import { onMounted } from "vue"
+
   export default {
     props: {
       aide: {
@@ -67,6 +69,15 @@
       }
     },
 
+    // setup(props) {
+    //   const declineAide = async(aideId) => {
+    //     console.log(aideId);
+    //     await store.dispatch('groups/declineAide', {aideId, groupId })
+    //   }
+
+    // return {declineAide}
+    //   // console.log(props.aide)
+    // }
 
   }
 </script>

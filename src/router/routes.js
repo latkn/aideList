@@ -63,8 +63,9 @@ const routes = [
           },
         },
         {
-          path: 'edit',
+          path: 'edit/:id',
           name: 'editGroup',
+          props: true,
           component: () => import('../pages/GroupsEditGroup.vue'),
           meta: {
             auth: true,
@@ -78,38 +79,39 @@ const routes = [
     name: 'ЛК исполнителя',
     component: () => import('../pages/Aide.vue'),
     meta: {
-      auth: true,
+      // auth: true,
       // layout: 'main'
     },
     children: [
+
       {
         path: 'manage',
-          name: 'ManageAide',
+          name: 'AideMainPage',
           component: () => import('../pages/AidePage.vue'),
           meta: {
             auth: true,
             layout: 'main'
           }
       },
+      // {
+      //   path: 'edit',
+      //     name: 'editAidePage',
+      //     component: () => import('../pages/EditAidePage.vue'),
+      //     meta: {
+      //       auth: true,
+      //       layout: 'main'
+      //     }
+      // },
       {
-        path: 'edit',
-          name: 'editAidePage',
-          component: () => import('../pages/EditAidePage.vue'),
+        path: 'edit/:id',
+          name: 'aide__editgroup',
+          component: () => import('../pages/Aide__EditGroup.vue'),
           meta: {
             auth: true,
             layout: 'main'
           }
       },
     ]
-  },
-  {
-    path: '/manage2',
-      name: 'ManageAide2',
-      component: () => import('../pages/AidePage2.vue'),
-      meta: {
-        auth: true,
-        layout: 'main'
-      }
   },
   {
     path: '/',
