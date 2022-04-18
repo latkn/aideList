@@ -197,7 +197,6 @@ export default defineComponent({
 
 
     const addPlace = () => {
-      // console.log(prices.value.places);
       prices.value.placesLength++
       prices.value.places.push({
         place: prices.value.placesLength,
@@ -207,14 +206,10 @@ export default defineComponent({
     }
 
     const removeLastPlace = () => {
-      // console.log(prices.value.placesLength);
       prices.value.placesLength--
       prices.value.places.splice(-1)
     }
 
-    // watch(props.fixed, (newValue, oldValue) => {
-    //   console.log(newValue);
-    // })
     const submitHandler = async() => {
       submitting.value = true
       // console.log(prices.value);
@@ -226,9 +221,7 @@ export default defineComponent({
     return {
       prices,
       addPlace, removeLastPlace, daysBeforeOpenOptions,
-      // placeNumbers,
       submitHandler, submitting
-      // timeStart, timeEnd
 
 
     }

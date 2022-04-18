@@ -48,13 +48,6 @@ export default defineComponent({
         console.log(error);
       }
     }
-
-    // onMounted(()=> {
-    //   const uid = store.dispatch('auth/getUid')
-    //   console.log(uid);
-    // })
-
-
     return {formData, submitHandler}
   }
 })

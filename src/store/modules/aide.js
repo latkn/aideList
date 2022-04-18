@@ -69,7 +69,7 @@ const actions = {
   async fetchActiveGroups({commit, dispatch}, {aideId, groupId}) {
     try {
       // console.log(aideId, groupId);
-      debugger
+      // debugger
      await activeGroups.fetch()
      console.log(activeGroups.data.values());
 

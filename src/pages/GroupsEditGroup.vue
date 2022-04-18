@@ -154,24 +154,13 @@ setup () {
       aides.value = await store.dispatch('groups/fetchAides', groupId)
       aides.value.forEach((aide)=> allAides.value.push(aide))
       groupInfo.value = await store.dispatch('groups/fetchGroupInfo', groupId)
-      // console.log(groupInfo.value);
       })
 
-    // async function fetchAides() {
-
-
-    // }
-
-
     const requestSentAides = computed(() => {
-      // debugger
-      // if (allAides.value) {
         return allAides.value.filter((aide) => aide.status == 'requestSent')
 
       // }
     })
-
-    // if (allAides.value.hasOwnProperty('place')) {
 
     const confirmedAides = computed(() => {
       return allAides.value.filter(aide => aide.status == 'confirmed')
@@ -204,10 +193,7 @@ setup () {
 
     const declineAide = async(aideId) => {
       await store.dispatch('groups/declineAide', {aideId, groupId })
-      // fetchAides()
-      // const index = confirmedAides.value.findIndex((a) => a.id == aideId)
-      // confirmedAides.value.splice(index, 1)
-      // console.log(confirmedAides.value);
+
     }
 
 
@@ -219,10 +205,6 @@ setup () {
       await store.dispatch('groups/changeAidePlace', {aideId, aidePlace, groupId})
       // console.log(aideId, aidePlace);
     }
-
-
-
-
 
     return {
       places: ['random', '1','2','3','4','5','6','7','8','9','10'],

@@ -1,7 +1,6 @@
 <template>
   <q-page class="flex-center q-ma-xl">
     <h3>Список ваших групп</h3>
-    <!-- <router-link to='/groups/add'  > -->
       <q-btn color="green" class="q-mb-lg" icon="add" label="Подключить новое сообщество"
       @click="isEditGroupDataDialogOpen=true"
        />
@@ -16,7 +15,6 @@
         </template>
       </edit-group-data>
     </q-dialog>
-    <!-- </router-link> -->
     <div class="row ">
       <keep-alive>
         <group-card
@@ -51,7 +49,6 @@ export default defineComponent({
     onMounted(async()=> {
       groups.value = await store.dispatch('groups/fetchGroups')
       groups.value.forEach((group)=> allGroups.value.push(group))
-      // console.log(AllGroups.value);
     })
 
 

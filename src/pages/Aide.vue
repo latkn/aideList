@@ -1,8 +1,6 @@
 <template>
   <q-page class="flex-center">
     <router-view />
-
-
   </q-page>
 </template>
 

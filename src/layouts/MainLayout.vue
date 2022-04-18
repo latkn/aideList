@@ -63,12 +63,12 @@ const linksList = [
     icon: 'school',
     path: '/groups/manage'
   },
-  {
-    title: 'Кошелёк',
-    caption: 'wallet',
-    icon: 'chat',
-    path: '/groups/wallet'
-  },
+  // {
+  //   title: 'Кошелёк',
+  //   caption: 'wallet',
+  //   icon: 'chat',
+  //   path: '/groups/wallet'
+  // },
   {
     title: 'ЛК исполнителя',
     caption: '',

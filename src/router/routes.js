@@ -17,15 +17,7 @@ const routes = [
       layout: 'empty'
     },
   },
-  {
-    path: '/register',
-    name: 'Register',
-    component: () => import('../pages/Register.vue'),
-    meta: {
-      auth: false,
-      layout: 'empty'
-    },
-  },
+
   {
     path: '/groups',
     name: 'ЛК владельца группы',

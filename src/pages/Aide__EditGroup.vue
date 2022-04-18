@@ -91,12 +91,6 @@ import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'Aide__EditGroup',
-  // props: {
-  // id: {
-  //   type: [String, Number],
-  //   default: null,
-  //   },
-  // },
   setup() {
     const $q = useQuasar()
     $q.loadingBar.setDefaults({
@@ -127,37 +121,23 @@ export default defineComponent({
 
       prices.value = groupInfo.value.prices
 
-      // const {daysBeforeOpen} = prices.value
-
       checkAideInfo()
       $q.loadingBar.stop()
-
-
     })
-      // console.log(prices.value);
 
     const checkAideInfo = async() => {
       aideFromTemplate.value = await store.dispatch('aide/fetchAideInfo')
       const aideId = aideFromTemplate.value.id
-      // debugger
-      // console.log(userId.value)
-
-
       aideFromGroup.value = await store.dispatch('aide/checkAideInfoInGroup', {groupId, aideId})
-      // debugger
 
-        // debugger
       if (aideFromGroup.value) {
         aide.value = aideFromGroup.value
         // console.log('status: ',aide.value.status);
       } else {
         aide.value = aideFromTemplate.value
       }
-      //шаблон из юзер
-      // console.log(aide.value);
+
     }
-
-
 
     const sendRequest = async() => {
       aide.value.groupId = route.params.id
